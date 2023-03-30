@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="
+https://code.jquery.com/jquery-3.6.4.min.js
+" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+</head>
+<body>
+<form id="form">
+    <label for="id">Id:</label>
+    <input type="text" id="id" name="id"><br><br>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br><br>
+    <input type="button" value="Submit" id="submit">
+    <input type="button" value="Delete" id="delete">
+</form>
+<script>
+    $('#submit').click(function(){
+        putData();
+        document.getElementById("form").reset();
+        //window.open("http://localhost:8080/hello");
+    })
+
+    $('#delete').click(function(){
+        deleteData();
+    })
+
+    async function putData(){
+        let options = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({"id": $('#id').val(), "message": "hello", "name": $('#name').val()})
+        };
+
+        await fetch ("http://localhost:8080/hello",options);
+    }
+
+    async function deleteData(){
+        let options = {
+            method: 'DELETE'
+        };
+
+        await fetch ("http://localhost:8080/hello",options);
+    }
+</script>
+</body>
+</html>
