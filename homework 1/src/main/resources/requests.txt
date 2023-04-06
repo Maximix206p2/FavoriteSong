@@ -1,0 +1,21 @@
+let options = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({"id": "4", "username": "user4", "password": "pass4", "email": "email4"})
+        };
+
+fetch ("http://localhost:8081/user",options);
+
+options = {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({"id": "2", "username": "user4n", "password": "pass4n", "email": "email4n"})
+        };
+
+fetch ("http://localhost:8081/user",options);
+
+options = {
+            method: 'Delete'
+        };
+
+fetch ("http://localhost:8081/user/4",options);
